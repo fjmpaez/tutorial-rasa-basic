@@ -1,0 +1,89 @@
+version: "3.1"
+
+nlu:
+  - synonym: cuenta
+    examples: |
+      - cuenta bancaria
+      - cuenta corriente
+      - cuenta de ahorro
+
+  - synonym: tarjeta
+    examples: |
+      - tarjeta de crédito
+
+  - regex: transfer_account_number
+    examples: |
+      - \d{20}
+
+  - regex: transfer_amount
+    examples: |
+      - \d{1,6}\.\d{1,2}
+      - \d{1,6}
+
+  - intent: greeting
+    examples: |
+      - hola
+      - ¿qué tal?
+      - buenos días
+      - buenas tardes
+      - buenas noches
+
+  - intent: bye
+    examples: |
+      - adios
+      - hasta luego
+      - nos vemos
+      - hasta pronto
+      - hasta la próxima
+
+  - intent: balance
+    examples: |
+      - ¿cuánto dinero tengo?
+      - ¿cuánto dinero tengo en mi cuenta?
+      - ¿cuánto dinero me queda?
+      - ¿cuál es mi saldo?
+      - ¿cuál es el saldo de mi [cuenta](product_type)?
+      - ¿cuál es el saldo de mi [tarjeta](product_type)?
+
+  - intent: last_transactions
+    examples: |
+      - movimientos recientes
+      - últimas operaciones
+      - últimos movimientos
+      - últimos movimientos en mi cuenta
+      - ¿cuáles son los últimos movimientos?
+      - ¿cuáles son las últimas operaciones?
+      - ¿cuáles son los últimos movimientos en mi cuenta?
+      - ¿cuáles son los últimos movimientos en la [cuenta](product_type)?
+      - ¿cuáles son los últimos movimientos en la [tarjeta](product_type)?
+
+  - intent: transfer
+    examples: |
+      - haz una transferencia
+      - quiero hacer una transferencia
+      - quiero transferir dinero
+      - quiero enviar dinero
+      - quiero hacer una transferencia a otra cuenta
+      - quiero transferir dinero a otra cuenta
+      - quiero transferir [234.89](transfer_amount) a la cuenta [40381121613111761246](transfer_account_number)
+      - quiero transferir [234.8] euros
+      - transferir [234] euros (transfer_amount)
+      - enviar [234.87] euros (transfer_amount)
+      - transferir dinero a [40381121613111761246](transfer_account_number)
+
+  - intent: info_transfer_account_number
+    examples: |
+      - [40381121613111761246](transfer_account_number)
+      - la cuenta es [40381121613111761246](transfer_account_number)
+      - la cuenta de destino es [40381121613111761246](transfer_account_number)
+
+  - intent: info_transfer_amount
+    examples: |
+      - [234.89](transfer_amount)
+      - [234534.8](transfer_amount)
+      - [12534](transfer_amount)
+      - [2114.9] EUR (transfer_amount)
+      - [24.89] euros (transfer_amount)
+      - la cantidad es [234.89](transfer_amount)
+      - la cantidad es [234.8] EUR (transfer_amount)
+      - la cantidad es [234] euros (transfer_amount)

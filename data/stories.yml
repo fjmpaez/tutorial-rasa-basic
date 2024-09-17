@@ -1,0 +1,47 @@
+version: "3.1"
+
+stories: null
+
+rules:
+  - rule: greeting and Help
+    steps:
+      - intent: greeting
+      - action: utter_greeting
+      - action: utter_help
+
+  - rule: ask the user to try again
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default
+      - action: utter_help
+
+  - rule: goodbye
+    steps:
+      - intent: bye
+      - action: utter_bye
+
+  - rule: get balance
+    steps:
+      - intent: balance
+      - action: action_balance
+
+  - rule: get last transactions
+    steps:
+      - intent: last_transactions
+      - action: action_last_transactions
+
+  - rule: activate transfer form
+    steps:
+      - intent: transfer
+      - action: transfer_form
+      - active_loop: transfer_form
+
+  - rule: make transfer
+    condition:
+      - active_loop: transfer_form
+    steps:
+      - action: transfer_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_transfer
